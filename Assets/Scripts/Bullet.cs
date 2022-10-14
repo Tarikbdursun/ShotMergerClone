@@ -12,9 +12,7 @@ namespace DefaultNamespace
         [SerializeField] private float forwardLimit = 50.0f;
         public Transform bulletParent;
         private Vector3 startPos = new Vector3();
-        /// <summary>
-        /// TODO BURASI DÜZGÜN ÇALIŞMIYOR FIXLE ACİL !!! ACİL !!!
-        /// </summary>
+        
         private void Start()
         {
             startPos = transform.position;
