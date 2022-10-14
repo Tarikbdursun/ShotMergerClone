@@ -76,7 +76,7 @@ namespace DefaultNamespace
                 {
                     var newCube = cubeParent.GetChild(i).GetComponent<Cube>();
                     newCube.isStacked = true;
-                    if (newCube.effectType == EffectType.increaser) 
+                    if (newCube.effectType == EffectType.increaser)
                         _player.time /= 2;
                 }
                 collider.enabled = true;
