@@ -3,7 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using DefaultNamespace;
 using Managers;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace PlayerScripts
 {
@@ -15,15 +17,17 @@ namespace PlayerScripts
         [SerializeField] private Bullet bullet;
         [SerializeField] private int bulletCount;
         [SerializeField] private Transform bulletSpawnPoint;
-
-        public Transform BulletSpawnPoint => bulletSpawnPoint;
-
+        
         private List<Bullet> bulletPool = new List<Bullet>();
         private int bulletIndex = 0;
 
 
         //Time
         public float time = 1.0f;
+        
+        //Player UI
+        [SerializeField] private TextMeshProUGUI shootInfoText;
+
 
         //Stack
         [SerializeField] private Transform stackPoint;
@@ -54,17 +58,23 @@ namespace PlayerScripts
 
         #region Unity Events
 
-        private void Start()
-        {
-            SpawnBullets();
-            StartCoroutine(Shoot());
-        }
-
         private void Awake()
         {
             InitSingleton();
         }
+        
+        private void Start()
+        {
+            SpawnBullets();
+            StartCoroutine(Shoot());
+            SetShootInfo();
+        }
 
+        private void Update()
+        {
+            SetShootInfo();
+        }
+        
         private void OnTriggerEnter(Collider other)
         {
             if (other.CompareTag("Cube"))
@@ -93,6 +103,14 @@ namespace PlayerScripts
 
         #endregion
 
+        #region MyEvents
+
+        private void SetShootInfo()
+        {
+            shootInfoText.text = (1 / time).ToString() + "/sec";
+        }
+
+        #endregion
 
         #region IShootable Operations
 
@@ -102,6 +120,7 @@ namespace PlayerScripts
             {
                 var spawnBullet = Instantiate(bullet, bulletSpawnPoint);
                 bulletPool.Add(spawnBullet);
+                spawnBullet.bulletParent = bulletSpawnPoint;
                 spawnBullet.gameObject.SetActive(false);
             }
         }

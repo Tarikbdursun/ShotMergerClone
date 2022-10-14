@@ -81,7 +81,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletSpeed: 20
-  forwardLimit: 30
+  forwardLimit: 50
+  bulletParent: {fileID: 0}
 --- !u!54 &8028886518550955888
 Rigidbody:
   m_ObjectHideFlags: 0

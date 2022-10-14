@@ -9,8 +9,8 @@ namespace DefaultNamespace
     {
         public float bulletSpeed = 5;
 
-        [SerializeField] private float forwardLimit = 10.0f;
-        [SerializeField] private Transform bulletParent;
+        [SerializeField] private float forwardLimit = 50.0f;
+        public Transform bulletParent;
         private Vector3 startPos = new Vector3();
         /// <summary>
         /// TODO BURASI DÜZGÜN ÇALIŞMIYOR FIXLE ACİL !!! ACİL !!!

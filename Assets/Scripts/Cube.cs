@@ -16,8 +16,7 @@ namespace DefaultNamespace
         [SerializeField] private Bullet bullet;
         [SerializeField] private int bulletCount;
         [SerializeField] private Transform bulletSpawnPoint;
-
-        public Transform BulletSpawnPoint => bulletSpawnPoint;
+        
 
         private List<Bullet> bulletPool = new List<Bullet>();
         private int bulletIndex = 0;
@@ -94,6 +93,7 @@ namespace DefaultNamespace
             {
                 var spawnBullet = Instantiate(bullet, bulletSpawnPoint);
                 bulletPool.Add(spawnBullet);
+                spawnBullet.bulletParent = bulletSpawnPoint;
                 spawnBullet.gameObject.SetActive(false);
             }
         }
