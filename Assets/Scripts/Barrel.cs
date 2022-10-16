@@ -1,4 +1,5 @@
 using System;
+using Managers;
 using TMPro;
 using UnityEngine;
 
@@ -24,16 +25,11 @@ namespace DefaultNamespace
                 healthText.text = health.ToString();
                 if (!HasHealth())
                 {
-                    smokeParticle.transform.SetParent(null);
+                    smokeParticle.transform.SetParent(LevelManager.GetCurrentLevel().transform);
                     smokeParticle.Play();
                     gameObject.SetActive(false);
                 }
             }
-        }
-
-        private void DeactivateBarrel()
-        {
-            gameObject.SetActive(false);
         }
         
         private bool HasHealth()

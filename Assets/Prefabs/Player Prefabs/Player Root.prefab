@@ -81,9 +81,10 @@ MonoBehaviour:
   sideMovementRoot: {fileID: 6724454298694818320}
   leftLimit: {fileID: 6724454298836406989}
   rightLimit: {fileID: 6724454300102878866}
-  sideMovementSensitivity: 4
-  sideMovementLerpSpeed: 5
-  forwardSpeed: 5
+  sideMovementSensitivity: 3
+  sideMovementLerpSpeed: 4
+  forwardSpeed: 6
+  CanPlayerMove: 0
 --- !u!1 &6724454300102878867
 GameObject:
   m_ObjectHideFlags: 0

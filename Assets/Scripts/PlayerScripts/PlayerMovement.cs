@@ -29,7 +29,7 @@ namespace PlayerScripts
         private float _backToFrictionSpeed = 5f;
         private bool _canBackToZeroFriction = false;
         private float _friction = 0;
-
+        public bool CanPlayerMove;
         private Vector2 mousePositionCM // Providing the same experience to everyone
         {
             get
@@ -67,7 +67,7 @@ namespace PlayerScripts
 
         private void Update()
         {
-            if (_gameManager.isGameStarted)
+            if (_gameManager.isGameStarted && CanPlayerMove)
             {
                 HandleForwardMovement();
                 HandleSideMovement();

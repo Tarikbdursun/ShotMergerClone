@@ -7,6 +7,7 @@ TagManager:
   - Cube
   - Barrel
   - Bullet
+  - End
   layers:
   - Default
   - TransparentFX

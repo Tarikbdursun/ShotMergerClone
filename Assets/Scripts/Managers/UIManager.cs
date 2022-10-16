@@ -1,4 +1,5 @@
 using System;
+using TMPro;
 using UnityEngine;
 
 namespace Managers
@@ -10,7 +11,8 @@ namespace Managers
         [SerializeField] private GameObject hudPanel;
         [SerializeField] private GameObject winPanel;
         [SerializeField] private GameObject failPanel;
-
+        [SerializeField] private TextMeshProUGUI levelInfoText;
+        
         #endregion
         
         #region SINGLETON
@@ -34,6 +36,7 @@ namespace Managers
         {
             startPanel.SetActive(false);
             hudPanel.SetActive(true);
+            levelInfoText.text =$"Level {LevelManager.GetCurrentLevelNumber()}" ;
         }
         
         public void GameEnd(bool won) 
@@ -42,10 +45,12 @@ namespace Managers
             if (won)
             {
                 winPanel.SetActive(true);
+                hudPanel.SetActive(false);
             }
             else
             {
                 failPanel.SetActive(true);
+                hudPanel.SetActive(false);
             }
         }
         public void NextLevel() 

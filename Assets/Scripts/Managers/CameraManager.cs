@@ -1,3 +1,4 @@
+using DG.Tweening;
 using PlayerScripts;
 using UnityEngine;
 
@@ -11,29 +12,21 @@ namespace Managers
 
         public float camSmoothness = 6;
         private float xPos = 0;
-
-
-        private bool startTargetFollowing;
-        private bool endTargetFollowing;
-        private bool startMoveOn=true;
-        private bool endMove;
         
-        private float startMoveTimer;
-        private float startMoveDuration = 1f;
-
-        private float endMoveTimer;
+        //Start Settings and EndMove 
+        private Sequence gameEndMove;
+        
+        private bool canEndMove;
         private float endMoveDuration = 1f;
 
         private Vector3 endPos;
-        private Vector3 endLastPos;
         private Vector3 startPos;
-        private Vector3 startLastPos;
-
-        private Quaternion startRot;
-        private Quaternion startLastRot;
-        private Quaternion endRot;
-        private Quaternion endLastRot;
         
+        private Quaternion startRot;
+        private Quaternion endRot;
+        
+        private GameManager _gameManager=>GameManager.instance;
+
         private PlayerMovement _playerMovement => PlayerMovement.instance;
 
         #region SINGLETON
@@ -58,11 +51,12 @@ namespace Managers
 
             startPos = mainCamera.transform.localPosition;
             startRot = mainCamera.transform.localRotation;
+            gameEndMove = DOTween.Sequence();
         }
 
         private void LateUpdate()
         {
-            if (GameManager.instance.isGameStarted && endMove)
+            if (canEndMove)
             {
                 EndMove();
             }
@@ -72,34 +66,22 @@ namespace Managers
                 transform.position = new Vector3(xPos, target.transform.position.y, target.transform.position.z);
             }
         }
-        //StartMove yok
 
-        //Oyun tamamen bittiğinde bu olacak TODO değerleri değiştir
-        public void SetEndMove()
+        public void SetEndMove(bool isWon)
         {
-            endPos = new Vector3(0, 6.5f, -9.5f);
-            endLastPos = new Vector3(0, 4.2f, -5.5f);
-            endRot = Quaternion.Euler(20f, 0, 0);
-            endLastRot = Quaternion.Euler(18.5f, 0, 0);
-            endMove = true;
+             endPos = new Vector3(0, 8f, -8.4f);
+             endRot = Quaternion.Euler(40f, 0, 0);
+             canEndMove = true;
+             if(isWon)
+                 confettiParticle.Play();
         }
-        
 
+        
         private void EndMove()
         {
-            if (endMoveTimer < endMoveDuration)
-            {
-                endMoveTimer += Time.deltaTime;
-                mainCamera.transform.localPosition = Vector3.Lerp(endPos, endLastPos, endMoveTimer / endMoveDuration);
-                mainCamera.transform.rotation = Quaternion.Lerp(endRot, endLastRot, endMoveTimer / endMoveDuration);
-            }
-            else
-            {
-                mainCamera.transform.localPosition = endLastPos;
-                //endTargetFollowing = true;
-                endMoveTimer = 0;
-                endMove = false;
-            }
+            gameEndMove.Append(mainCamera.transform.DOLocalMove(endPos, endMoveDuration));
+            gameEndMove.Join(mainCamera.transform.DORotateQuaternion(endRot, endMoveDuration)
+                .OnComplete(()=>canEndMove=false));
         }
 
         public void CameraReset()

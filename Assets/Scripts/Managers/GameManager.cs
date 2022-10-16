@@ -42,6 +42,7 @@ namespace Managers
         public void GameStart()
         {
             isGameStarted = true;
+            _playerMovement.CanPlayerMove = true;
             _uiManager.GameStart();
         }
 
@@ -49,20 +50,13 @@ namespace Managers
         {
             isGameStarted = false;
             _uiManager.GameEnd(won);
-            if (won)
-            {
-                //CameraManager.instance.confettiParticle.gameObject.SetActive(true);
-                //CameraManager.instance.confettiParticle.Play();
-            }
         }
 
         public void NextLevel()
         {
-            //_cameraManager.confettiParticle.gameObject.SetActive(false);
-            //_cameraManager.confettiParticle.Stop();
             LevelManager.NextLevel();
-            _uiManager.NextLevel();
-           // _player.PlayerReset();
+           _uiManager.NextLevel();
+           _player.PlayerReset();
            _cameraManager.CameraReset();
         }
 
@@ -70,7 +64,7 @@ namespace Managers
         {
             LevelManager.RestartLevel();
             _uiManager.RestartLevel();
-            //_player.PlayerReset();
+            _player.PlayerReset();
             _cameraManager.CameraReset();
         }
     }

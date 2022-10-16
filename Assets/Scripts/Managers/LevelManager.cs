@@ -21,7 +21,7 @@ namespace Managers
 
         public static void LoadLevel()
         {
-            //currentLevel = GameObject.Instantiate(levelList.Levels[levelIndex % levelList.Levels.Count]);
+            currentLevel = GameObject.Instantiate(levelList.Levels[levelIndex % levelList.Levels.Count]);
         }
 
         public static void NextLevel()

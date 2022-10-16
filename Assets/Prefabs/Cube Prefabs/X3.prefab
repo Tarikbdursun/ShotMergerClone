@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3808329710672309097}
+  - component: {fileID: 8109785093125147249}
   m_Layer: 0
   m_Name: X3
   m_TagString: Untagged
@@ -28,13 +29,28 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 7644690360722695517}
   - {fileID: 757413990149968552}
   - {fileID: 7042613156559860597}
-  - {fileID: 7644690360722695517}
   - {fileID: 3808329711017326368}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8109785093125147249
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3808329710672309096}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ac17dca15ee4e22b833620bd68569cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  effect: 3
+  infoText: {fileID: 3808329710867344634}
+  EffectValue: 3
 --- !u!1 &3808329710867344632
 GameObject:
   m_ObjectHideFlags: 0
@@ -282,9 +298,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cube
       objectReference: {fileID: 0}
+    - target: {fileID: 7847420241778992122, guid: c4186cfa66fb734428a900d19aa2f4cc, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7847420241778992123, guid: c4186cfa66fb734428a900d19aa2f4cc, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7847420241778992123, guid: c4186cfa66fb734428a900d19aa2f4cc, type: 3}
       propertyPath: m_LocalPosition.x
@@ -348,9 +368,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cube
       objectReference: {fileID: 0}
+    - target: {fileID: 7847420241778992122, guid: c4186cfa66fb734428a900d19aa2f4cc, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7847420241778992123, guid: c4186cfa66fb734428a900d19aa2f4cc, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7847420241778992123, guid: c4186cfa66fb734428a900d19aa2f4cc, type: 3}
       propertyPath: m_LocalPosition.x
@@ -414,9 +438,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cube
       objectReference: {fileID: 0}
+    - target: {fileID: 7847420241778992122, guid: c4186cfa66fb734428a900d19aa2f4cc, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7847420241778992123, guid: c4186cfa66fb734428a900d19aa2f4cc, type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7847420241778992123, guid: c4186cfa66fb734428a900d19aa2f4cc, type: 3}
       propertyPath: m_LocalPosition.x
